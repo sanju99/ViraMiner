@@ -20,8 +20,7 @@ def DNA_to_onehot_dataset(dataset):
 def DNA_to_onehot(dna_line):
   options_onehot = {'A': [1,0,0,0,0],'C' :[0,1,0,0,0], 'G':[0,0,1,0,0] ,'T':[0,0,0,1,0],'N':[0,0,0,0,1]}
   onehot_data = map(lambda e: options_onehot[e], dna_line)
-  onehot_data = np.array(onehot_data)
-  return onehot_data 
+  return np.array(list(onehot_data))
 
 # takes in a line from dataset in format "seq_ID,sequence,label"
 # removes seq_ID, but remembers unique project names
