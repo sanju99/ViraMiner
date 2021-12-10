@@ -1,3 +1,8 @@
+# ViraMiner_Python3
+
+Replicate <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC6738585/" target="_blank">Tampuu <i>et al.</i>, 2019</a> in Python 3 for a journal club presentation in Maha Farhat's lab. Original code <a href="https://github.com/NeuroCSUT/ViraMiner" target="_blank">here</a> is in Python 2.  
+
+
 # Using pre-trained ViraMiner
 See "Testing models" sections below, but in short:
 1) format your data as "seq_id,sequence,label", where sequences are given in letters "ATCG...", labels are 1 or 0.
