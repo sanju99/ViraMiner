@@ -14,6 +14,7 @@ from sklearn.metrics import confusion_matrix,roc_auc_score
 from helper_with_N import *
 
 import argparse
+import subprocess
 
 
 ################################
@@ -28,11 +29,9 @@ args = parser.parse_args()
 #################################################
 # Automatically checking train and test set sizes!
 #################################################
-from subprocess import check_output
 
 def wc(filename):
-    return int(check_output(["wc", "-l", filename]).split()[0])
-
+    return int(subprocess.run(["wc", "-l", filename], capture_output=True).stdout.split()[0])
 
 test_set_size = wc(args.input_file)
 print(f"test_set_size: {test_set_size}")
