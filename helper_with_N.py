@@ -13,7 +13,7 @@ def DNA_to_onehot_dataset(dataset):
   for row in dataset:
     onehot_data.append(map(lambda e: options_onehot[e], row))
   onehot_data = np.array(onehot_data)
-  print np.shape(onehot_data)
+  print(np.shape(onehot_data))
   return onehot_data 
 
 # processes a DNA string to onehot
