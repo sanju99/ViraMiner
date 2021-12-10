@@ -8,8 +8,7 @@ from keras.layers import GlobalMaxPooling1D,GlobalAveragePooling1D
 from keras.callbacks import ModelCheckpoint, Callback, LearningRateScheduler
 #from keras.optimizers import Adam, Nadam,SGD
 
-from tensorflow.keras.optimizers import Adam
-from keras.optimizers import Nadam, SGD
+from tensorflow.keras.optimizers import Adam, Nadam, SGD
 from sklearn.metrics import confusion_matrix,roc_auc_score
 
 from helper_with_N import *
