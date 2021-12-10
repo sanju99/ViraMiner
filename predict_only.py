@@ -6,7 +6,6 @@ from keras.models import Model#, Sequential
 from keras.layers import Input, Dense, Conv1D, concatenate, Dropout
 from keras.layers import GlobalMaxPooling1D,GlobalAveragePooling1D
 from keras.callbacks import ModelCheckpoint, Callback, LearningRateScheduler
-#from keras.optimizers import Adam, Nadam,SGD
 
 from tensorflow.keras.optimizers import Adam, Nadam, SGD
 from sklearn.metrics import confusion_matrix,roc_auc_score
@@ -69,11 +68,11 @@ print(model_name)
 ###############################
 
 print("##########################")
-pred_probas = model.predict_generator(generate_batches_from_file(args.input_file,128), steps=te_steps_per_ep+1,workers=1, use_multiprocessing=False)
+pred_probas = model.predict(generate_batches_from_file(args.input_file, 128), steps=te_steps_per_ep+1,workers=1, use_multiprocessing=False)
 print(f"original pred_probas size (divisible with batch size) {np.shape(pred_probas)}")
 pred_probas = pred_probas[:test_set_size,:]
 print(f"cropped the repetitions away, leaving {np.shape(pred_probas)}")
-preds = pred_probas>0.5
+preds = pred_probas > 0.5
 
 print(f"TEST ROC area under the curve \n {roc_auc_score(test_labels, pred_probas)}")
 np.savetxt(model_name+"_TEST_predictions.txt",pred_probas,fmt="%.5f")
