@@ -1,6 +1,6 @@
 # ViraMiner_Python3
 
-Replicate <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC6738585/" target="_blank">Tampuu <i>et al.</i>, 2019</a> in Python 3 for a journal club presentation in Maha Farhat's lab. Original code <a href="https://github.com/NeuroCSUT/ViraMiner" target="_blank">here</a> is in Python 2.  
+Replicate <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC6738585/" target="_blank">Tampuu <i>et al.</i>, 2019</a> in Python 3 for a journal club presentation in Maha Farhat's lab.
 
 
 # Using pre-trained ViraMiner
