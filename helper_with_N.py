@@ -11,10 +11,10 @@ def DNA_to_onehot_dataset(dataset):
   options_onehot = {'A': [1,0,0,0,0],'C' :[0,1,0,0,0], 'G':[0,0,1,0,0] ,'T':[0,0,0,1,0],'N':[0,0,0,0,1]}
   onehot_data = []
   for row in dataset:
-    onehot_data.append(map(lambda e: options_onehot[e], row))
+    onehot_data.append(list(map(lambda e: options_onehot[e], row)))
   onehot_data = np.array(onehot_data)
   print(np.shape(onehot_data))
-  return onehot_data 
+  return onehot_data
 
 # processes a DNA string to onehot
 def DNA_to_onehot(dna_line):
