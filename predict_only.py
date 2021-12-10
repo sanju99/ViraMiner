@@ -33,9 +33,9 @@ def wc(filename):
 
 
 test_set_size = wc(args.input_file)
-print "test_set_size: ",test_set_size
+print(f"test_set_size: {test_set_size}")
 te_steps_per_ep = int(test_set_size/128)
-print "##\n input data: \n ", args.input_file, "\n##"
+print(f"##\n input data: \n {args.input_file} \n##")
 
 
 #######################
@@ -62,19 +62,18 @@ model = load_model(args.model_path)
 model.summary()
 
 model_name = (args.model_path).split(".hdf")[0]  # for saving predictions and labels
-print model_name
+print(model_name)
 ###############################
 ####Testing the model##########
 ###############################
 
-print "##########################"
+print("##########################")
 pred_probas = model.predict_generator(generate_batches_from_file(args.input_file,128), steps=te_steps_per_ep+1,workers=1, use_multiprocessing=False)
-print "original pred_probas size (divisible with batch size)",np.shape(pred_probas)
+print(f"original pred_probas size (divisible with batch size) {np.shape(pred_probas)}")
 pred_probas = pred_probas[:test_set_size,:]
-print "cropped the repetitions away, leaving", np.shape(pred_probas)
+print(f"cropped the repetitions away, leaving {np.shape(pred_probas)}")
 preds = pred_probas>0.5
 
-print "TEST ROC area under the curve \n", roc_auc_score(test_labels, pred_probas)
+print(f"TEST ROC area under the curve \n {roc_auc_score(test_labels, pred_probas)}")
 np.savetxt(model_name+"_TEST_predictions.txt",pred_probas,fmt="%.5f")
 np.savetxt(model_name+"_TEST_lables.txt",test_labels,fmt="%d")
-
