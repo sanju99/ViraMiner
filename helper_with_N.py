@@ -81,7 +81,7 @@ def generate_batches_from_file(path,batch_size):
             if batch_counter==batch_size:
                 submitted_counter += batch_size
 
-                return(np.array(seqs), np.array(labels))
+                yield(np.array(seqs), np.array(labels))
                 batch_counter=0
                 seqs=[]
                 labels=[]
