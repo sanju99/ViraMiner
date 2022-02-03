@@ -1,5 +1,6 @@
 import numpy as np
 import tensorflow as tf
+import pandas as pd
 
 from tensorflow.keras.models import Model, load_model
 from tensorflow.keras.layers import Input, Dense, Conv1D, concatenate, Dropout, GlobalMaxPooling1D, GlobalAveragePooling1D
