@@ -1,13 +1,14 @@
 import numpy as np
 import tensorflow as tf
 import pandas as pd
+from sklearn.preprocessing import binarize
 
 from tensorflow.keras.models import Model, load_model
 from tensorflow.keras.layers import Input, Dense, Conv1D, concatenate, Dropout, GlobalMaxPooling1D, GlobalAveragePooling1D
 from tensorflow.keras.callbacks import ModelCheckpoint, Callback, LearningRateScheduler
 from tensorflow.keras.optimizers import Adam, Nadam, SGD
 
-from sklearn.metrics import confusion_matrix,roc_auc_score
+from sklearn.metrics import confusion_matrix, roc_auc_score
 
 from helper_with_N import *
 
@@ -72,10 +73,12 @@ pred_probas = model.predict(generate_batches_from_file(args.input_file, 128), st
 print(f"original pred_probas size (divisible with batch size) {np.shape(pred_probas)}")
 pred_probas = pred_probas[:test_set_size,:]
 print(f"cropped the repetitions away, leaving {np.shape(pred_probas)}")
-preds = pred_probas > 0.5
 
-print(f"TEST ROC area under the curve \n {roc_auc_score(test_labels, pred_probas)}")
-# pd.DataFrame({"pred": pred_probas, "test": test_labels}).to_csv(args.output_path + "_TEST_predictions.txt", sep="\t")
+# convert the predicted probabilities to class labels
+preds = binarize(pred_probas.reshape((-1, 1)), threshold=0.5)
+
+print(f"TEST ROC area under the curve \n {roc_auc_score(test_labels, preds)}")
+pd.DataFrame({"pred": preds.flatten(), "test": test_labels}).to_csv(args.output_path + "_test.txt", sep="\t")
                                                                  
-np.savetxt(args.output_path+"_TEST_predictions.txt", pred_probas, fmt="%.5f")
-np.savetxt(args.output_path+"_TEST_labels.txt", test_labels, fmt="%d")
+# np.savetxt(args.output_path+"_TEST_predictions.txt", pred_probas, fmt="%.5f")
+# np.savetxt(args.output_path+"_TEST_labels.txt", test_labels, fmt="%d")
