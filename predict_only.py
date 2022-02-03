@@ -74,7 +74,7 @@ print(f"cropped the repetitions away, leaving {np.shape(pred_probas)}")
 preds = pred_probas > 0.5
 
 print(f"TEST ROC area under the curve \n {roc_auc_score(test_labels, pred_probas)}")
-pd.DataFrame({"pred": pred_probas, "test": test_labels).to_csv(output_path + "_TEST_predictions.txt")
+pd.DataFrame({"pred": pred_probas, "test": test_labels).to_csv(args.output_path + "_TEST_predictions.txt")
                                                                  
 # np.savetxt(args.output_path+"_TEST_predictions.txt", pred_probas, fmt="%.5f")
 # np.savetxt(args.output_path+"_TEST_labels.txt", test_labels, fmt="%d")
