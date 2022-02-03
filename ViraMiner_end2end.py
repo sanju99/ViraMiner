@@ -1,9 +1,10 @@
 import numpy as np
-from keras.models import Model, load_model
-from keras.layers import Input, Dense, Conv1D, concatenate, Dropout
-from keras.layers import GlobalMaxPooling1D,GlobalAveragePooling1D
-from keras.callbacks import ModelCheckpoint, Callback, LearningRateScheduler
-from keras.optimizers import Adam, Nadam,SGD
+import tensorflow as tf
+
+from tensorflow.keras.models import Model, load_model
+from tensorflow.keras.layers import Input, Dense, Conv1D, concatenate, Dropout, GlobalMaxPooling1D, GlobalAveragePooling1D
+from tensorflow.keras.callbacks import ModelCheckpoint, Callback, LearningRateScheduler
+from tensorflow.keras.optimizers import Adam, Nadam, SGD
 
 from sklearn.metrics import confusion_matrix,roc_auc_score
 
