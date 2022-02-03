@@ -1,7 +1,9 @@
 import numpy as np
+import tensorflow as tf
+
+from tensorflow.keras.callbacks import Callback
+
 from sklearn.metrics import roc_auc_score
-import keras
-from keras.callbacks import Callback
 
 
 PROJECT_NAMES=[]
@@ -98,7 +100,7 @@ def generate_batches_from_file(path,batch_size):
 #############################################################
 
 # Callback to printout VALIDATION AUROC on each epoch end
-class roc_callback(keras.callbacks.Callback):
+class roc_callback(Callback):
     """# Arguments
        validation_data: validation data in format (val_x,val_y)
     """
