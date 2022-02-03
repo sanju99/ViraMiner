@@ -1,10 +1,11 @@
 import numpy as np
+import tensorflow as tf
 
-from keras.models import load_model
-from keras.models import Model
-from keras.layers import Input, Dense, concatenate, Dropout
-from keras.callbacks import ModelCheckpoint, Callback, LearningRateScheduler
-from keras.optimizers import Adam
+from tensorflow.keras.models import Model, load_model
+from tensorflow.keras.layers import Input, Dense, Conv1D, concatenate, Dropout
+from tensorflow.keras.callbacks import ModelCheckpoint, Callback, LearningRateScheduler
+from tensorflow.keras.optimizers import Adam
+
 from sklearn.metrics import roc_auc_score
 
 from helper_with_N import *
