@@ -47,7 +47,7 @@ python2 frequency_branch.py output_folder/output_model_name --input_path data/DN
 3) IMPORTANT: you need to specify the test_set CSV file, not just the dataset prefix as above ("fullset_test.csv", not "fullset")
 4) Usage example 
 
-python2 predict_only.py --input_file data/DNA_data/fullset_test.csv --model_path final_freq/freq_size1000_filter8_0.001None_drop0.1.hdf5 > test_testing.txt
+python3 predict_only.py --input_file data/DNA_data/fullset_test.csv --model_path final_ViraMiner/final_ViraMiner_beforeFT.hdf5 > test_testing.txt
 
 5) This will create two files - predictions and true labels to the same folder as your model
 
