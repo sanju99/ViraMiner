@@ -20,6 +20,7 @@ import subprocess
 parser = argparse.ArgumentParser()
 parser.add_argument("--input_file") # data file name
 parser.add_argument("--model_path") # pretrained model
+parser.add_argument("--output_path") # output path
 
 args = parser.parse_args()
 
@@ -73,5 +74,7 @@ print(f"cropped the repetitions away, leaving {np.shape(pred_probas)}")
 preds = pred_probas > 0.5
 
 print(f"TEST ROC area under the curve \n {roc_auc_score(test_labels, pred_probas)}")
-np.savetxt(model_name+"_TEST_predictions.txt",pred_probas,fmt="%.5f")
-np.savetxt(model_name+"_TEST_lables.txt",test_labels,fmt="%d")
+pd.DataFrame({"pred": pred_probas, "test": test_labels).to_csv(output_path + "_TEST_predictions.txt")
+                                                                 
+# np.savetxt(args.output_path+"_TEST_predictions.txt", pred_probas, fmt="%.5f")
+# np.savetxt(args.output_path+"_TEST_labels.txt", test_labels, fmt="%d")
